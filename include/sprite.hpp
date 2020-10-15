@@ -3,6 +3,7 @@
 
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../include/common.hpp"
 
 namespace me
 {
@@ -19,10 +20,8 @@ public:
 private:
     const int _id;
     string _png;
-    sfml::sprite _sprite;
-    static int _lastid = 0;
+    sf::Sprite _sprite;
 };
 
 }
-
 #endif
