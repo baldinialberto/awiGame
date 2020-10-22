@@ -2,7 +2,7 @@
 #include <SFML/Graphics/Texture.hpp>
 
 me::sprite::sprite(const char* png, int custom_id)
-: _id{custom_id}, _sprite{sf::Sprite(sf::Texture(png))}
+: _id{custom_id}, _sprite{sf::Texture()}
 {
 }
 

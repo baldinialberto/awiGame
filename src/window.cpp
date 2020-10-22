@@ -2,7 +2,7 @@
 #include <SFML/Window/VideoMode.hpp>
 
 me::window::window(int width, int height, const char* title)
-: _win{sf::RenderWindow(sf::VideoMode(width, height), "AwiGame")}
+: _win{sf::VideoMode(width, height), "AwiGame"}
 {
 }
 
