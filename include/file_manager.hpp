@@ -3,10 +3,11 @@
 
 namespace fm
 {
-	enum pokekit_type {NPC = 0, PG};
+	enum pokekit_type {NPC = 0, PG, test};
 	static const char* pokekit_relPaths[] {
-		"\\pokekit\\Graphics\\Characters\\",	// NPC
-		"\\pokekit\\Graphics\\Characters\\"		// PG
+		"/pokekit/Graphics/Characters/",	// NPC
+		"/pokekit/Graphics/Characters/",	// PG
+		"/pokekit/Graphics/"					// test
 	};
 }
 
