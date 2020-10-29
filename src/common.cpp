@@ -24,7 +24,11 @@ void me::fIt::_load()
 
 }
 
-const char * me::filePath(const char *pFilename, const char *pRelPath)
+string me::filePath(const char *pFilename, fm::pokekit_type pType)
 {
-    return "";
+    string currFilePath{ __FILE__ };
+    currFilePath.resize(currFilePath.find("\\src"));
+    currFilePath.append(fm::pokekit_relPaths[pType]).append(pFilename);
+
+    return currFilePath;
 }

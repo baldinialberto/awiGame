@@ -11,6 +11,8 @@
 #include <vector>
 #include <tuple>
 
+#include "file_manager.hpp"
+
 using namespace std;
 
 namespace me
@@ -30,7 +32,7 @@ private:
     mutable bool _opened;
 };
 
-    const char* filePath(const char* pFilename, const char* pRelPath);
+    string filePath(const char* pFilename, fm::pokekit_type pType);
 
 }
 

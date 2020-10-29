@@ -4,15 +4,17 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "../include/common.hpp"
+#include "../include/sprite.hpp"
+
 using namespace std;
 
 int main(int argc, const char** args)
 {
     sf::RenderWindow window(sf::VideoMode(1600, 900), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
     
+    me::sprite test { me::filePath("trchar056.png", fm::pokekit_type::NPC).c_str() };
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -24,7 +26,7 @@ int main(int argc, const char** args)
         }
 
         window.clear();
-        window.draw(shape);
+        window.draw(test.data());
         window.display();
     }
     
