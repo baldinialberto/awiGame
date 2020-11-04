@@ -13,15 +13,16 @@ class sprite
 public:
     sprite(const char* png, int custom_id =0);
     ~sprite();
-    const sprite& png(const char* png);
+    const sprite& load_texture(const char* filepath);
     const sprite& id(int id);
-    const sf::Sprite data();
+    const sf::Sprite& data();
     const int id() noexcept;
     const char* png() noexcept;
     void draw() noexcept;
 private:
     int _id;
     string _png;
+    sf::Texture _texture;
     sf::Sprite _sprite;
 };
 

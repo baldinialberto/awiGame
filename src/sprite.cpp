@@ -2,25 +2,25 @@
 #include <SFML/Graphics/Texture.hpp>
 
 me::sprite::sprite(const char* png, int custom_id)
-: _id{custom_id}, _sprite{sf::Texture()}
+: _id{custom_id}, _png{png}
 {
-    sf::Texture temp_texture;
-    if (!temp_texture.loadFromFile(png))
-    {
-        cout << "unable to read from " << png << endl;
-    }
-    _sprite.setTexture(temp_texture);
+    load_texture(png);
 }
 
 me::sprite::~sprite()
 {
 }
 
-const me::sprite& me::sprite::png(const char* png)
+const me::sprite& me::sprite::load_texture(const char* filepath)
 {
-    sf::Texture _tex;
-    if (_tex.loadFromFile(string(png)))
-        _sprite.setTexture(_tex);
+    if (_texture.loadFromFile(string(filepath)))
+    {
+        _sprite.setTexture(_texture);
+        _png = string(filepath);
+    } else
+    {
+        cout << "Unable to open file " << filepath << endl;
+    }
     return *this;
 }
 
@@ -31,7 +31,7 @@ const me::sprite& me::sprite::id(int id)
     return *this;
 }
 
-const sf::Sprite me::sprite::data()
+const sf::Sprite& me::sprite::data()
 {
     return _sprite;
 }

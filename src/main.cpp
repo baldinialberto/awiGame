@@ -13,8 +13,10 @@ int main(int argc, const char** args)
 {
     sf::RenderWindow window(sf::VideoMode(1600, 900), "SFML works!");
     
-    me::sprite test { me::filePath("Firefox.png", fm::pokekit_type::test).c_str() };
+    me::sprite test { me::filePath("trchar056.png", fm::pokekit_type::NPC).c_str() };
     cout << std::filesystem::current_path() << endl;
+
+    
 
     while (window.isOpen())
     {
