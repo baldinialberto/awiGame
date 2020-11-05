@@ -12,6 +12,7 @@ void me::npc::draw() noexcept
 
 void me::npc::pollEvent()
 {
+    const float delta {10.0f};
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) // move down
     {
         if (_pose / 4 == 0) // still moving down
@@ -19,6 +20,7 @@ void me::npc::pollEvent()
         } else {            // start moving down
             _pose = 0;
         }
+        move({0.0f, delta});
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) // move left
     {
         if (_pose / 4 == 1) // still moving left
@@ -26,6 +28,7 @@ void me::npc::pollEvent()
         } else {            // start moving left
             _pose = 4;
         }
+        move({-delta, 0.0f});
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) // move right
     {
         if (_pose / 4 == 2) // still moving right
@@ -33,6 +36,7 @@ void me::npc::pollEvent()
         } else {            // start moving right
             _pose = 8;
         }
+        move({delta, 0.0f});
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) // move up
     {
         if (_pose / 4 == 3) // still moving up
@@ -40,12 +44,15 @@ void me::npc::pollEvent()
         } else {            // start moving up
             _pose = 12;
         }
+        move({0.0f, -delta});
     } else {
         _pose /= 4;
         _pose *= 4;
     }
 }
 
-void me::npc::move()
+void me::npc::move(sf::Vector2f offset)
 {
+    _pos += offset;
+    _sprite.move(offset);
 }

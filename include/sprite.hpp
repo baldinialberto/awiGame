@@ -26,6 +26,7 @@ private:
     sf::IntRect _text_rect;
     sf::Texture _texture;
 protected:
+    sf::Vector2f _pos;
     sf::Sprite _sprite;
     sf::RenderWindow& _win;
 };

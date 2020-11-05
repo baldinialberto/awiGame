@@ -27,7 +27,7 @@ public:
     virtual void draw() noexcept override;
     void pollEvent();
 private:
-    void move();
+    void move(sf::Vector2f offset);
     char _pose;
 };
 
