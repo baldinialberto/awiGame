@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <chrono>
+#include <thread>
 
 #include <SFML/Graphics.hpp>
 
@@ -14,11 +16,13 @@ int main(int argc, const char** args)
 {
     sf::RenderWindow window(sf::VideoMode(1600, 900), "SFML works!");
     
-    me::npc test {56, window};
-    cout << std::filesystem::current_path() << endl;
+    me::npc test {"056", window};
+    cout << std::__fs::filesystem::current_path() << endl;
 
     while (window.isOpen())
     {
+        chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
+        
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -27,9 +31,13 @@ int main(int argc, const char** args)
                 window.close();
         }
 
+        test.pollEvent();
         window.clear();
         test.draw();
         window.display();
+        
+        chrono::steady_clock::time_point t2 = chrono::steady_clock::now();
+        this_thread::sleep_for(chrono::milliseconds(50 - static_cast<int>(chrono::duration<float>(t2 - t1).count() * 1000)));
     }
     
     return EXIT_SUCCESS;

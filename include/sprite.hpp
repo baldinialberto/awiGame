@@ -19,14 +19,15 @@ public:
     const sf::Sprite& data();
     const int id() noexcept;
     const char* png() noexcept;
-    void draw() noexcept;
+    virtual void draw() noexcept;
 private:
     int _id;
     string _png;
-    sf::RenderWindow& _win;
     sf::IntRect _text_rect;
     sf::Texture _texture;
+protected:
     sf::Sprite _sprite;
+    sf::RenderWindow& _win;
 };
 
 }

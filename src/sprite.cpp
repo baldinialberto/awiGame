@@ -2,10 +2,10 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
-me::sprite::sprite(const char* png, sf::RenderWindow& parentWindow)
-: _id{0}, _png{png}, _win{parentWindow}
+me::sprite::sprite(const char* filepath, sf::RenderWindow& parentWindow)
+: _id{0}, _png{filepath}, _win{parentWindow}
 {
-    load_texture(png);
+    load_texture(filepath);
 }
 
 me::sprite::~sprite()
@@ -55,6 +55,7 @@ const char* me::sprite::png() noexcept
 
 void me::sprite::draw() noexcept
 {
+    cout << "draw " << _png << endl;
     _win.draw(_sprite);
 }
 

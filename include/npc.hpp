@@ -14,20 +14,17 @@ namespace me
 class npc: public sprite
 {
 public:
-    npc(int id, sf::RenderWindow& parentWindow)
+    npc(const char* id, sf::RenderWindow& parentWindow)
         : me::sprite{
             me::filePath(
-                string{"trchar" + to_string(id) + ".png"}.c_str(),
+                         string{"trchar"}.append(id).append(".png").c_str(),
                 fm::pokekit_type::NPC).c_str(),
             parentWindow
-        }
+        }, _pose{0}
     {
     }
-    ~npc()
-        : ~sprite()
-    {
-    }
-
+    ~npc() {};
+    virtual void draw() noexcept override;
     void pollEvent();
 private:
     void move();
