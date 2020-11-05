@@ -6,6 +6,7 @@
 
 #include "../include/common.hpp"
 #include "../include/sprite.hpp"
+#include "../include/npc.hpp"
 
 using namespace std;
 
@@ -13,10 +14,8 @@ int main(int argc, const char** args)
 {
     sf::RenderWindow window(sf::VideoMode(1600, 900), "SFML works!");
     
-    me::sprite test { me::filePath("trchar056.png", fm::pokekit_type::NPC).c_str() };
+    me::npc test {56, window};
     cout << std::filesystem::current_path() << endl;
-
-    
 
     while (window.isOpen())
     {
@@ -29,7 +28,7 @@ int main(int argc, const char** args)
         }
 
         window.clear();
-        window.draw(test.data());
+        test.draw();
         window.display();
     }
     

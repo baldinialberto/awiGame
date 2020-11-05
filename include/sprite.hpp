@@ -11,9 +11,10 @@ namespace me
 class sprite
 {
 public:
-    sprite(const char* png, int custom_id =0);
+    explicit sprite(const char* png, sf::RenderWindow& parentWindow);
     ~sprite();
     const sprite& load_texture(const char* filepath);
+    const sprite& set_textRect(int x, int y, int w, int h);
     const sprite& id(int id);
     const sf::Sprite& data();
     const int id() noexcept;
@@ -22,6 +23,8 @@ public:
 private:
     int _id;
     string _png;
+    sf::RenderWindow& _win;
+    sf::IntRect _text_rect;
     sf::Texture _texture;
     sf::Sprite _sprite;
 };

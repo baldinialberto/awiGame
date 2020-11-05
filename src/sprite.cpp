@@ -1,8 +1,9 @@
 #include "../include/sprite.hpp"
+#include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
-me::sprite::sprite(const char* png, int custom_id)
-: _id{custom_id}, _png{png}
+me::sprite::sprite(const char* png, sf::RenderWindow& parentWindow)
+: _id{0}, _png{png}, _win{parentWindow}
 {
     load_texture(png);
 }
@@ -21,6 +22,12 @@ const me::sprite& me::sprite::load_texture(const char* filepath)
     {
         cout << "Unable to open file " << filepath << endl;
     }
+    return *this;
+}
+
+const me::sprite& me::sprite::set_textRect(int x, int y, int w, int h)
+{
+    _sprite.setTextureRect(sf::IntRect(x, y, w, h));
     return *this;
 }
 
@@ -48,6 +55,6 @@ const char* me::sprite::png() noexcept
 
 void me::sprite::draw() noexcept
 {
-    // draw sprite
+    _win.draw(_sprite);
 }
 
