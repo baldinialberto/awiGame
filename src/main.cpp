@@ -14,7 +14,7 @@ using namespace std;
 
 int main(int argc, const char** args)
 {
-    sf::RenderWindow window(sf::VideoMode(480, 320), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(480, 320), "Awigame");
     
     me::npc test {"056", window};
     //cout << std::__fs::filesystem::current_path() << endl;

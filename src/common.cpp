@@ -26,7 +26,7 @@ void me::fIt::_load()
 
 string me::filePath(const char *pFilename, fm::pokekit_type pType)
 {
-    string currFilePath{std::filesystem::current_path()};
+    string currFilePath{std::__fs::filesystem::current_path()};
     currFilePath.append(fm::pokekit_relPaths[pType]).append(pFilename);
 
     return currFilePath;
