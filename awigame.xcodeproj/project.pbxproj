@@ -17,6 +17,7 @@
 		725EB70625702AAF00882127 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725EB70125702AAF00882127 /* common.cpp */; };
 		725EB70725702AAF00882127 /* npc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725EB70225702AAF00882127 /* npc.cpp */; };
 		725EB70825702AAF00882127 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725EB70325702AAF00882127 /* main.cpp */; };
+		725EB71225702B9900882127 /* map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 725EB71025702B9900882127 /* map.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,8 +34,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		720686E62566EE8B0007143F /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
-		720686E72566EE8B0007143F /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; path = include; sourceTree = "<group>"; };
 		720686E92566EEBE0007143F /* libsfml-audio.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-audio.2.5.1.dylib"; path = "lib/apple/libsfml-audio.2.5.1.dylib"; sourceTree = "<group>"; };
 		720686EA2566EEBE0007143F /* libsfml-network.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-network.2.5.1.dylib"; path = "lib/apple/libsfml-network.2.5.1.dylib"; sourceTree = "<group>"; };
 		720686EB2566EEBE0007143F /* libsfml-graphics.2.5.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-graphics.2.5.1.dylib"; path = "lib/apple/libsfml-graphics.2.5.1.dylib"; sourceTree = "<group>"; };
@@ -51,6 +50,8 @@
 		725EB70D25702ABA00882127 /* sprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = sprite.hpp; path = include/sprite.hpp; sourceTree = "<group>"; };
 		725EB70E25702ABA00882127 /* common.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = common.hpp; path = include/common.hpp; sourceTree = "<group>"; };
 		725EB70F25702ABA00882127 /* window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = window.hpp; path = include/window.hpp; sourceTree = "<group>"; };
+		725EB71025702B9900882127 /* map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = map.cpp; path = src/map.cpp; sourceTree = "<group>"; };
+		725EB71425702BA800882127 /* map.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = map.hpp; path = include/map.hpp; sourceTree = "<group>"; };
 		729AD77B2566ED33003B3AF4 /* awigame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = awigame; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -85,6 +86,7 @@
 		725EB6FD25702A8F00882127 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				725EB71425702BA800882127 /* map.hpp */,
 				725EB70E25702ABA00882127 /* common.hpp */,
 				725EB70A25702ABA00882127 /* file_manager.hpp */,
 				725EB70C25702ABA00882127 /* npc.hpp */,
@@ -103,6 +105,7 @@
 				725EB70225702AAF00882127 /* npc.cpp */,
 				725EB6FF25702AAF00882127 /* sprite.cpp */,
 				725EB70025702AAF00882127 /* window.cpp */,
+				725EB71025702B9900882127 /* map.cpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -112,8 +115,6 @@
 			children = (
 				725EB6FE25702A9E00882127 /* src */,
 				725EB6FD25702A8F00882127 /* include */,
-				720686E72566EE8B0007143F /* include */,
-				720686E62566EE8B0007143F /* src */,
 				729AD77C2566ED33003B3AF4 /* Products */,
 				720686E82566EEBE0007143F /* Frameworks */,
 			);
@@ -185,6 +186,7 @@
 			files = (
 				725EB70425702AAF00882127 /* sprite.cpp in Sources */,
 				725EB70725702AAF00882127 /* npc.cpp in Sources */,
+				725EB71225702B9900882127 /* map.cpp in Sources */,
 				725EB70625702AAF00882127 /* common.cpp in Sources */,
 				725EB70825702AAF00882127 /* main.cpp in Sources */,
 				725EB70525702AAF00882127 /* window.cpp in Sources */,
