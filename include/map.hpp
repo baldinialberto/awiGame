@@ -28,6 +28,7 @@ public:
     const pair<int, int> dims();
 private:
     pair<int, int> _dims;
+    bool _collidable;
 };
 
 }

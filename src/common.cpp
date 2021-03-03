@@ -26,7 +26,8 @@ void me::fIt::_load()
 
 string me::filePath(const char *pFilename, fm::pokekit_type pType)
 {
-    string currFilePath{std::__fs::filesystem::current_path()};
+    //string currFilePath{std::__fs::filesystem::current_path()};
+    string currFilePath {"/Users/albertobaldini/source/repos/awigame/"};
     currFilePath.append(fm::pokekit_relPaths[pType]).append(pFilename);
 
     return currFilePath;
