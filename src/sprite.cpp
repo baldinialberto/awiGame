@@ -38,24 +38,24 @@ const me::sprite& me::sprite::id(int id)
     return *this;
 }
 
-const sf::Sprite& me::sprite::data()
+const sf::Sprite& me::sprite::data() const
 {
     return _sprite;
 }
 
-const int me::sprite::id() noexcept
+const int me::sprite::id() const noexcept
 {
     return _id;
 }
 
-const char* me::sprite::png() noexcept
+const char* me::sprite::png() const noexcept
 {
     return _png.c_str();
 }
 
 void me::sprite::draw() noexcept
 {
-    cout << "draw " << _png << endl;
+    //cout << "draw " << _png << endl;
     _win.draw(_sprite);
 }
 

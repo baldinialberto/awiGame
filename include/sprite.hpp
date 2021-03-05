@@ -12,18 +12,22 @@ class sprite
 {
 public:
     explicit sprite(const char* png, sf::RenderWindow& parentWindow);
-    ~sprite();
+    virtual ~sprite();
     const sprite& load_texture(const char* filepath);
     const sprite& set_textRect(int x, int y, int w, int h);
     const sprite& id(int id);
-    const sf::Sprite& data();
-    const int id() noexcept;
-    const char* png() noexcept;
+    const sf::Sprite& data() const;
+    virtual void pollEvent() {};
+    const int id() const noexcept;
+    const char* png() const noexcept;
     virtual void draw() noexcept;
     void priority(unsigned char value);
-    unsigned char priority();
+    unsigned char priority() const;
     bool collidable(); // if _collidable is set on constr. nn
     void collidable(bool value);
+    bool operator<(const sprite& cto) const noexcept { return _priority < cto.priority(); }
+    bool operator>(const sprite& cto) const noexcept { return _priority < cto.priority(); }
+    bool operator==(const sprite& cto) const noexcept { return _priority == cto.priority(); }
 private:
     int _id;
     string _png;

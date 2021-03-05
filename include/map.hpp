@@ -14,7 +14,7 @@ namespace me
 class map : public sprite
 {
 public:
-    map(const char* id, bool collidable,
+    explicit map(const char* id, bool collidable,
             sf::RenderWindow& parentWindow)
         : me::sprite{
             me::filePath(
@@ -24,7 +24,7 @@ public:
         }, _collidable{collidable}
     {
     }
-    ~map();
+    virtual ~map();
     const pair<int, int> dims();
 private:
     pair<int, int> _dims;

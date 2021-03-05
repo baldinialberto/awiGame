@@ -13,7 +13,7 @@ namespace me
 class npc: public sprite
 {
 public:
-    npc(const char* id, sf::RenderWindow& parentWindow)
+    explicit npc(const char* id, sf::RenderWindow& parentWindow)
         : me::sprite{
             me::filePath(
                          string{"trchar"}.append(id).append(".png").c_str(),
@@ -22,9 +22,9 @@ public:
         }, _pose{0}
     {
     }
-    ~npc() {};
+    virtual ~npc() {};
     virtual void draw() noexcept override;
-    void pollEvent();
+    virtual void pollEvent() override;
 private:
     void move(sf::Vector2f offset);
     char _pose;
