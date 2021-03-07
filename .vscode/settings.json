@@ -1,0 +1,14 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/Users/albertobaldini/source/repos/awigame/build/apps",
+            "binaryPath": "/Users/albertobaldini/source/repos/awigame/build/apps/game",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "vector": "cpp",
+        "ostream": "cpp"
+    }
+}

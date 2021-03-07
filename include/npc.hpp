@@ -21,6 +21,7 @@ public:
             parentWindow
         }, _pose{0}
     {
+        priority(2);
     }
     virtual ~npc() {};
     virtual void draw() noexcept override;

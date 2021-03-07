@@ -14,22 +14,27 @@ namespace me
 class map : public sprite
 {
 public:
-    explicit map(const char* id, bool collidable,
+    explicit map(const char* id, bool collidable, pair<int, int> map_dimensions, 
             sf::RenderWindow& parentWindow)
         : me::sprite{
             me::filePath(
-                         string{"trchar"}.append(id).append(".png").c_str(),
+                string(id).append(".png").c_str(),
                 fm::pokekit_type::PROP).c_str(),
             parentWindow
         }, _collidable{collidable}
     {
+        dims(map_dimensions);
+        priority(0);
     }
-    virtual ~map();
-    const pair<int, int> dims();
+    //virtual void draw() noexcept override;
+    virtual ~map() {};
+    void dims(pair<int, int> d); 
+    const pair<int, int> dims() const noexcept;
 private:
     pair<int, int> _dims;
     bool _collidable;
 };
+
 
 }
 

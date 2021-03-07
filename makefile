@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -Wall -pedantic-errors -std=c++17
+CXXFLAGS := -Wall -pedantic-errors -std=c++17 -I ./include/
 LDFLAGS  := -L/usr/lib -lstdc++ -lsfml-graphics -lsfml-window -lsfml-system -lm
 BUILD    := ./build
 OBJ_DIR  := $(BUILD)/objects
