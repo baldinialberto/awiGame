@@ -13,13 +13,13 @@ namespace me
     class npc : public sprite
     {
     public:
-        explicit npc(const char *id, sf::RenderWindow &parentWindow, me::rendercamera &camera)
+        explicit npc(const char *id, sf::RenderWindow &parentWindow)
             : me::sprite{
                   me::filePath(
                       string{"trchar"}.append(id).append(".png").c_str(),
                       fm::pokekit_type::NPC)
                       .c_str(),
-                  parentWindow, camera},
+                  parentWindow},
               _pose{0}
         {
             priority(2);

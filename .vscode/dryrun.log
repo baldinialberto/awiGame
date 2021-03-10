@@ -1,7 +1,22 @@
-make all --dry-run --keep-going --print-directory
+make all --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/albertobaldini/source/repos/awigame'
 mkdir -p ./build/apps
 mkdir -p ./build/objects
- 
+mkdir -p build/objects/src
+g++ -Wall -pedantic-errors -std=c++17 -I ./include/ -Iinclude/ -c src/camera.cpp -o build/objects/src/camera.o -L/usr/lib -lstdc++ -lsfml-graphics -lsfml-window -lsfml-system -lm
+mkdir -p build/objects/src
+g++ -Wall -pedantic-errors -std=c++17 -I ./include/ -Iinclude/ -c src/common.cpp -o build/objects/src/common.o -L/usr/lib -lstdc++ -lsfml-graphics -lsfml-window -lsfml-system -lm
+mkdir -p build/objects/src
+g++ -Wall -pedantic-errors -std=c++17 -I ./include/ -Iinclude/ -c src/main.cpp -o build/objects/src/main.o -L/usr/lib -lstdc++ -lsfml-graphics -lsfml-window -lsfml-system -lm
+mkdir -p build/objects/src
+g++ -Wall -pedantic-errors -std=c++17 -I ./include/ -Iinclude/ -c src/map.cpp -o build/objects/src/map.o -L/usr/lib -lstdc++ -lsfml-graphics -lsfml-window -lsfml-system -lm
+mkdir -p build/objects/src
+g++ -Wall -pedantic-errors -std=c++17 -I ./include/ -Iinclude/ -c src/npc.cpp -o build/objects/src/npc.o -L/usr/lib -lstdc++ -lsfml-graphics -lsfml-window -lsfml-system -lm
+mkdir -p build/objects/src
+g++ -Wall -pedantic-errors -std=c++17 -I ./include/ -Iinclude/ -c src/sprite.cpp -o build/objects/src/sprite.o -L/usr/lib -lstdc++ -lsfml-graphics -lsfml-window -lsfml-system -lm
+mkdir -p build/objects/src
+g++ -Wall -pedantic-errors -std=c++17 -I ./include/ -Iinclude/ -c src/window.cpp -o build/objects/src/window.o -L/usr/lib -lstdc++ -lsfml-graphics -lsfml-window -lsfml-system -lm
+mkdir -p build/apps
+g++ -Wall -pedantic-errors -std=c++17 -I ./include/ -o ./build/apps/game build/objects/src/camera.o build/objects/src/common.o build/objects/src/main.o build/objects/src/map.o build/objects/src/npc.o build/objects/src/sprite.o build/objects/src/window.o -L/usr/lib -lstdc++ -lsfml-graphics -lsfml-window -lsfml-system -lm
 make: Leaving directory `/Users/albertobaldini/source/repos/awigame'
  

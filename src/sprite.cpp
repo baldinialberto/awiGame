@@ -2,7 +2,7 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
-me::sprite::sprite(const char *filepath, sf::RenderWindow &parentWindow, me::rendercamera &camera)
+me::sprite::sprite(const char *filepath, sf::RenderWindow &parentWindow)
     : _id{0}, _png{filepath}, _win{parentWindow}, _camera{camera}
 {
     load_texture(filepath);

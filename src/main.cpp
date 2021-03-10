@@ -18,10 +18,10 @@ bool compareSprite(shared_ptr<me::sprite> a, shared_ptr<me::sprite> b) { return 
 int main(int argc, const char **args)
 {
     sf::RenderWindow window(sf::VideoMode(480, 320), "Awigame");
-    me::rendercamera camera{};
+    sf::View{};
 
     vector<shared_ptr<me::sprite>> spriteV{
-        static_cast<shared_ptr<me::sprite>>(new me::npc("056", window, camera)),
+        static_cast<shared_ptr<me::sprite>>(new me::npc("056", window)),
         static_cast<shared_ptr<me::sprite>>(new me::map("Dirt", false, {0, 0}, window)),
         static_cast<shared_ptr<me::sprite>>(new me::map("Dirt", false, {96, 0}, window))};
     std::sort(spriteV.begin(), spriteV.end(), compareSprite);

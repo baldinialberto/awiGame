@@ -4,7 +4,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "../include/common.hpp"
-#include "../include/camera.hpp"
 
 namespace me
 {
@@ -12,7 +11,7 @@ namespace me
     class sprite
     {
     public:
-        explicit sprite(const char *png, sf::RenderWindow &parentWindow, me::rendercamera &camera);
+        explicit sprite(const char *png, sf::RenderWindow &parentWindow);
         virtual ~sprite();
         const sprite &load_texture(const char *filepath);
         const sprite &set_textRect(int x, int y, int w, int h);
@@ -48,10 +47,8 @@ namespace me
         unsigned char _priority;
         bool _collidable;
         sf::Vector2f _pos;
-        sf::Vector2f _camera_pos;
         sf::Sprite _sprite;
         sf::RenderWindow &_win;
-        me::rendercamera &_camera;
     };
 
 }
