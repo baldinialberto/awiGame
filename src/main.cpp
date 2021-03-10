@@ -18,7 +18,7 @@ bool compareSprite(shared_ptr<me::sprite> a, shared_ptr<me::sprite> b) { return 
 int main(int argc, const char **args)
 {
     sf::RenderWindow window(sf::VideoMode(480, 320), "Awigame");
-    sf::View{};
+    sf::View camera = window.getDefaultView();
 
     vector<shared_ptr<me::sprite>> spriteV{
         static_cast<shared_ptr<me::sprite>>(new me::npc("056", window)),

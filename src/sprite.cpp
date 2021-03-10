@@ -3,7 +3,7 @@
 #include <SFML/Graphics/Texture.hpp>
 
 me::sprite::sprite(const char *filepath, sf::RenderWindow &parentWindow)
-    : _id{0}, _png{filepath}, _win{parentWindow}, _camera{camera}
+    : _id{0}, _png{filepath}, _win{parentWindow}
 {
     load_texture(filepath);
     _priority = 0;
@@ -58,6 +58,5 @@ const char *me::sprite::png() const noexcept
 void me::sprite::draw() noexcept
 {
     //cout << "draw " << _png << endl;
-    _camera_pos = _pos - _camera.pos();
     _win.draw(_sprite);
 }
