@@ -2,6 +2,7 @@
 #define _CAMERA_HPP
 
 #pragma once
+#include <SFML/Graphics.hpp>
 #include "../include/common.hpp"
 #include "../include/map.hpp"
 
@@ -12,17 +13,19 @@ namespace me
     public:
         explicit rendercamera();
         virtual ~rendercamera();
-        void move(pair<int, int> movement);
+        void move(sf::Vector2f movement);
         void changeMap(map &map);
-        pair<int, int> pos() const;
+        sf::Vector2f pos() const;
         ostream &operator<<(ostream &os)
         {
             os << _map.png();
             return os;
         }
+        void anchor(me::sprite &to);
+        void free();
 
     private:
-        pair<int, int> _pos;
+        sf::Vector2f _pos;
         char _zoom;
         map &_map;
     };
