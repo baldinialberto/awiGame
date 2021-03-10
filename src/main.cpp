@@ -10,6 +10,7 @@
 #include <sprite.hpp>
 #include <npc.hpp>
 #include <map.hpp>
+#include <camera.hpp>
 
 using namespace std;
 
@@ -17,13 +18,14 @@ bool compareSprite(shared_ptr<me::sprite> a, shared_ptr<me::sprite> b) { return 
 
 int main(int argc, const char **args)
 {
-    sf::RenderWindow window(sf::VideoMode(480, 320), "Awigame");
-    sf::View camera = window.getDefaultView();
+    sf::RenderWindow window{sf::VideoMode(480, 320), "Awigame"};
+    me::camera camera{window};
 
-    vector<shared_ptr<me::sprite>> spriteV{
-        static_cast<shared_ptr<me::sprite>>(new me::npc("056", window)),
-        static_cast<shared_ptr<me::sprite>>(new me::map("Dirt", false, {0, 0}, window)),
-        static_cast<shared_ptr<me::sprite>>(new me::map("Dirt", false, {96, 0}, window))};
+    vector<shared_ptr<me::sprite>>
+        spriteV{
+            static_cast<shared_ptr<me::sprite>>(new me::npc("056", window)),
+            static_cast<shared_ptr<me::sprite>>(new me::map("Dirt", false, {0, 0}, window)),
+            static_cast<shared_ptr<me::sprite>>(new me::map("Dirt", false, {96, 0}, window))};
     std::sort(spriteV.begin(), spriteV.end(), compareSprite);
     for (auto x : spriteV)
         cout << x->png() << endl;
@@ -39,9 +41,12 @@ int main(int argc, const char **args)
                 window.close();
         }
 
+        camera.pollEvent();
         for (auto x : spriteV)
             x.get()->pollEvent();
+
         window.clear();
+
         for (auto x : spriteV)
             x.get()->draw();
         window.display();
