@@ -28,6 +28,7 @@ namespace me
     private:
         sf::RenderWindow &_win;
         sf::View _view;
+        //float _zoom = 1.0;
     };
 }
 

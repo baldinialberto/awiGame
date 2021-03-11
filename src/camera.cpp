@@ -1,4 +1,6 @@
 #include <camera.hpp>
+#include <iostream>
+using namespace std;
 
 me::camera::camera(sf::RenderWindow &win)
     : _win{win}
@@ -14,12 +16,13 @@ me::camera::~camera()
 
 void me::camera::pollEvent()
 {
-    const float deltaPos = 2.0;
-    const float deltaScale = .5;
-    const float deltaRot = .5;
+    const float deltaPos = 5.0f;
+    const float deltaScale = .1f;
+    const float deltaRot = 1.0f;
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) // move down
     {
-        move(0, -deltaPos);
+        move(0, deltaPos);
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::J)) // move left
     {
@@ -31,7 +34,7 @@ void me::camera::pollEvent()
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::I)) // move up
     {
-        move(0, deltaPos);
+        move(0, -deltaPos);
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::U)) // rotate left
     {
@@ -40,14 +43,6 @@ void me::camera::pollEvent()
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O)) // rotate right
     {
         rotate(deltaRot);
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::N)) // zoom in
-    {
-        zoom(deltaScale);
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::M)) // zoom out
-    {
-        zoom(-deltaScale);
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) // reset view
     {
