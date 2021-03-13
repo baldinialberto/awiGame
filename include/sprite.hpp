@@ -13,14 +13,11 @@ namespace me
     public:
         explicit sprite(const char *png, sf::RenderWindow &parentWindow);
         virtual ~sprite();
-        const sprite &load_texture(const char *filepath);
-        const sprite &set_textRect(int x, int y, int w, int h);
-        const sprite &id(int id);
         virtual const sf::Sprite &data() const;
         virtual void pollEvent() = 0;
         virtual const int id() const noexcept;
         virtual const char *png() const noexcept;
-        virtual void draw() noexcept;
+        virtual void draw() const noexcept;
         virtual unsigned char priority() const noexcept;
         virtual sf::Vector2f pos() const noexcept;
         virtual bool collidable() const noexcept;
@@ -30,8 +27,12 @@ namespace me
         virtual ostream &operator<<(ostream &os) const noexcept;
 
     protected:
+        virtual void update() = 0;
+        virtual const sprite &id(int id);
+        virtual const sprite &load_texture(const char *filepath);
+        virtual const sprite &set_textRect(int x, int y, int w, int h);
         virtual void priority(unsigned char value) { _priority = value; };
-        void collidable(bool value) { _collidable = value; };
+        virtual void collidable(bool value) { _collidable = value; };
 
     protected:
         int _id;

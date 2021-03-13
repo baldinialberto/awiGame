@@ -55,9 +55,8 @@ const char *me::sprite::png() const noexcept
     return _png.c_str();
 }
 
-void me::sprite::draw() noexcept
+void me::sprite::draw() const noexcept
 {
-    //cout << "draw " << _png << endl;
     _win.draw(_sprite);
 }
 

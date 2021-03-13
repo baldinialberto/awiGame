@@ -10,21 +10,16 @@
 
 namespace me
 {
-
     class map : public sprite
     {
     public:
-        explicit map(const char *filename, sf::Vector2i mDims, sf::RenderWindow &parentWindow)
-            : me::sprite{
-                  me::filePath(string(filename).append(".png").c_str(), fm::pokekit_type::PROP).c_str(),
-                  parentWindow}
-        {
-            priority(0);
-        }
-        virtual ~map(){};
+        explicit map(const char *filename, sf::Vector2i mDims, sf::RenderWindow &parentWindow);
+        virtual ~map();
         virtual void pollEvent() override{};
-    };
 
+    protected:
+        virtual void update() override{};
+    };
 }
 
 #endif

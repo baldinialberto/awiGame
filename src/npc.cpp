@@ -1,12 +1,38 @@
 #include "../include/npc.hpp"
 
-void me::npc::draw() noexcept
+me::npc::npc(const char *id, sf::RenderWindow &parentWindow)
+    : me::sprite{
+          me::filePath(
+              string{"trchar"}.append(id).append(".png").c_str(),
+              fm::pokekit_type::NPC)
+              .c_str(),
+          parentWindow},
+      _pose{0}, _oldPose{1}
 {
-    const int width_offs = 32, height_offs = 48;
-    set_textRect(
-        _pose % 4 * width_offs, _pose / 4 * height_offs,
-        width_offs, height_offs);
-    _win.draw(_sprite);
+    priority(2);
+    update();
+    _lastUpdate = chrono::steady_clock::now();
+}
+
+void me::npc::update()
+{
+    if (_pose != _oldPose)
+    {
+        const int width_offs = 32, height_offs = 48;
+        set_textRect(
+            _pose % 4 * width_offs, _pose / 4 * height_offs,
+            width_offs, height_offs);
+        _oldPose = _pose;
+    }
+    float dTime = static_cast<float>(
+        chrono::duration<float>(
+            chrono::steady_clock::now() - _lastUpdate)
+            .count() *
+        30);
+
+    move({_speed.x * dTime, _speed.y * dTime});
+
+    _lastUpdate = chrono::steady_clock::now(); // update last time
 }
 
 void me::npc::pollEvent()
@@ -16,55 +42,96 @@ void me::npc::pollEvent()
     {
         if (_pose / 4 == 0) // still moving down
         {
-            _pose = (_pose + 1) % 4;
+            if (_holdPose)
+            {
+                _holdPose--;
+            }
+            else
+            {
+                _pose = (_pose + 1) % 4;
+                _holdPose = 10;
+            }
         }
         else
         { // start moving down
             _pose = 0;
+            _holdPose = 10;
         }
-        move({0.0f, delta});
+        _speed.x = 0.0f;
+        _speed.y = delta;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) // move left
     {
         if (_pose / 4 == 1) // still moving left
         {
-            _pose = (_pose + 1) % 4 + 4;
+            if (_holdPose)
+            {
+                _holdPose--;
+            }
+            else
+            {
+                _pose = (_pose + 1) % 4 + 4;
+                _holdPose = 10;
+            }
         }
         else
         { // start moving left
             _pose = 4;
+            _holdPose = 10;
         }
-        move({-delta, 0.0f});
+        _speed.x = -delta;
+        _speed.y = 0.0f;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) // move right
     {
         if (_pose / 4 == 2) // still moving right
         {
-            _pose = (_pose + 1) % 4 + 8;
+            if (_holdPose)
+            {
+                _holdPose--;
+            }
+            else
+            {
+                _pose = (_pose + 1) % 4 + 8;
+                _holdPose = 10;
+            }
         }
         else
         { // start moving right
             _pose = 8;
+            _holdPose = 10;
         }
-        move({delta, 0.0f});
+        _speed.x = delta;
+        _speed.y = 0.0f;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) // move up
     {
         if (_pose / 4 == 3) // still moving up
         {
-            _pose = (_pose + 1) % 4 + 12;
+            if (_holdPose)
+            {
+                _holdPose--;
+            }
+            else
+            {
+                _pose = (_pose + 1) % 4 + 12;
+                _holdPose = 10;
+            }
         }
         else
         { // start moving up
             _pose = 12;
+            _holdPose = 10;
         }
-        move({0.0f, -delta});
+        _speed.x = 0.0f;
+        _speed.y = -delta;
     }
     else
     {
-        _pose /= 4;
-        _pose *= 4;
+        _speed.x = _speed.y = 0.0f;
+        _pose -= _pose % 4;
     }
+    update();
 }
 
 void me::npc::move(sf::Vector2f offset)

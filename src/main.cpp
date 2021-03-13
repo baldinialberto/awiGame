@@ -21,7 +21,7 @@ int main(int argc, const char **args)
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
 
-    sf::RenderWindow window{sf::VideoMode(480, 320), "Awigame",
+    sf::RenderWindow window{sf::VideoMode(960, 640), "Awigame",
                             sf::Style::Default, settings};
 
     me::camera camera{window};
@@ -65,7 +65,7 @@ int main(int argc, const char **args)
         chrono::steady_clock::time_point t2 = chrono::steady_clock::now();
         this_thread::sleep_for(
             chrono::milliseconds(
-                1000 / 10 - static_cast<int>(chrono::duration<float>(t2 - t1).count() * 1000)));
+                1000 / 60 - static_cast<int>(chrono::duration<float>(t2 - t1).count() * 1000)));
     }
 
     return EXIT_SUCCESS;
