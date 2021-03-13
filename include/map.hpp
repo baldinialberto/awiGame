@@ -11,30 +11,19 @@
 namespace me
 {
 
-class map : public sprite
-{
-public:
-    explicit map(const char* id, bool collidable, pair<int, int> map_dimensions, 
-            sf::RenderWindow& parentWindow)
-        : me::sprite{
-            me::filePath(
-                string(id).append(".png").c_str(),
-                fm::pokekit_type::PROP).c_str(),
-            parentWindow
-        }, _collidable{collidable}
+    class map : public sprite
     {
-        dims(map_dimensions);
-        priority(0);
-    }
-    //virtual void draw() noexcept override;
-    virtual ~map() {};
-    void dims(pair<int, int> d); 
-    const pair<int, int> dims() const noexcept;
-private:
-    pair<int, int> _dims;
-    bool _collidable;
-};
-
+    public:
+        explicit map(const char *filename, sf::Vector2i mDims, sf::RenderWindow &parentWindow)
+            : me::sprite{
+                  me::filePath(string(filename).append(".png").c_str(), fm::pokekit_type::PROP).c_str(),
+                  parentWindow}
+        {
+            priority(0);
+        }
+        virtual ~map(){};
+        virtual void pollEvent() override{};
+    };
 
 }
 

@@ -5,7 +5,7 @@ BUILD    := ./build
 OBJ_DIR  := $(BUILD)/objects
 APP_DIR  := $(BUILD)/apps
 TARGET   := game
-INCLUDE  := -Iinclude/
+INCLUDE  := -I include/
 SRC      :=                      \
    $(wildcard src/graphics/*.cpp) \
    $(wildcard src/gameplay/*.cpp) \

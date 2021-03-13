@@ -60,3 +60,40 @@ void me::sprite::draw() noexcept
     //cout << "draw " << _png << endl;
     _win.draw(_sprite);
 }
+
+unsigned char me::sprite::priority() const noexcept
+{
+    return _priority;
+};
+
+sf::Vector2f me::sprite::pos() const noexcept
+{
+    return _pos;
+}
+
+bool me::sprite::collidable() const noexcept
+{
+    return _collidable;
+};
+
+bool me::sprite::operator<(const sprite &cto) const noexcept
+{
+    return _priority < cto.priority();
+}
+
+bool me::sprite::operator>(const sprite &cto) const noexcept
+{
+    return _priority < cto.priority();
+}
+
+bool me::sprite::operator==(const sprite &cto) const noexcept
+{
+    return _priority == cto.priority();
+}
+
+ostream &me::sprite::operator<<(ostream &os) const noexcept
+{
+    cout << "Called" << endl;
+    os << _png.c_str();
+    return os;
+}

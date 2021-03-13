@@ -18,17 +18,25 @@ bool compareSprite(shared_ptr<me::sprite> a, shared_ptr<me::sprite> b) { return 
 
 int main(int argc, const char **args)
 {
-    sf::RenderWindow window{sf::VideoMode(480, 320), "Awigame"};
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
+
+    sf::RenderWindow window{sf::VideoMode(480, 320), "Awigame",
+                            sf::Style::Default, settings};
+
     me::camera camera{window};
 
-    vector<shared_ptr<me::sprite>>
-        spriteV{
-            static_cast<shared_ptr<me::sprite>>(new me::npc("056", window)),
-            static_cast<shared_ptr<me::sprite>>(new me::map("Dirt", false, {0, 0}, window)),
-            static_cast<shared_ptr<me::sprite>>(new me::map("Dirt", false, {96, 0}, window))};
+    vector<shared_ptr<me::sprite>> spriteV{
+        static_cast<shared_ptr<me::sprite>>(new me::npc("056", window))};
     std::sort(spriteV.begin(), spriteV.end(), compareSprite);
-    for (auto x : spriteV)
-        cout << x->png() << endl;
+
+    me::map testMap{"MAP_02", {2000, 2000}, window};
+
+    camera.focus(spriteV.at(0).get());
+    camera.target_map(&testMap);
+
+    /*     for (auto x : spriteV)
+        cout << x->png() << endl; */
 
     while (window.isOpen())
     {
@@ -41,14 +49,17 @@ int main(int argc, const char **args)
                 window.close();
         }
 
-        camera.pollEvent();
         for (auto x : spriteV)
             x.get()->pollEvent();
 
+        camera.pollEvent();
+
         window.clear();
 
+        testMap.draw();
         for (auto x : spriteV)
             x.get()->draw();
+
         window.display();
 
         chrono::steady_clock::time_point t2 = chrono::steady_clock::now();

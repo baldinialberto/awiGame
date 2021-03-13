@@ -4,6 +4,8 @@
 #pragma once
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include "../include/sprite.hpp"
+#include "../include/map.hpp"
 
 namespace me
 {
@@ -13,6 +15,8 @@ namespace me
         explicit camera(sf::RenderWindow &win);
         virtual ~camera();
         void pollEvent();
+        void focus(me::sprite *sprite);
+        void target_map(me::map *target);
 
     protected:
         void zoom(float value);
@@ -26,6 +30,8 @@ namespace me
         void set_angle(float angle);
 
     private:
+        me::map *_map;
+        me::sprite *_focus;
         sf::RenderWindow &_win;
         sf::View _view;
         //float _zoom = 1.0;

@@ -16,34 +16,28 @@ namespace me
         const sprite &load_texture(const char *filepath);
         const sprite &set_textRect(int x, int y, int w, int h);
         const sprite &id(int id);
-        const sf::Sprite &data() const;
-        virtual void pollEvent(){};
-        const int id() const noexcept;
-        const char *png() const noexcept;
+        virtual const sf::Sprite &data() const;
+        virtual void pollEvent() = 0;
+        virtual const int id() const noexcept;
+        virtual const char *png() const noexcept;
         virtual void draw() noexcept;
-        virtual unsigned char priority() const noexcept { return _priority; };
-        bool collidable() const noexcept { return _collidable; };
-        virtual bool operator<(const sprite &cto) const noexcept { return _priority < cto.priority(); }
-        virtual bool operator>(const sprite &cto) const noexcept { return _priority < cto.priority(); }
-        virtual bool operator==(const sprite &cto) const noexcept { return _priority == cto.priority(); }
-        virtual ostream &operator<<(ostream &os) const noexcept
-        {
-            cout << "Called" << endl;
-            os << _png.c_str();
-            return os;
-        }
+        virtual unsigned char priority() const noexcept;
+        virtual sf::Vector2f pos() const noexcept;
+        virtual bool collidable() const noexcept;
+        virtual bool operator<(const sprite &cto) const noexcept;
+        virtual bool operator>(const sprite &cto) const noexcept;
+        virtual bool operator==(const sprite &cto) const noexcept;
+        virtual ostream &operator<<(ostream &os) const noexcept;
 
     protected:
         virtual void priority(unsigned char value) { _priority = value; };
         void collidable(bool value) { _collidable = value; };
 
-    private:
+    protected:
         int _id;
         string _png;
         sf::IntRect _text_rect;
         sf::Texture _texture;
-
-    protected:
         unsigned char _priority;
         bool _collidable;
         sf::Vector2f _pos;
