@@ -11,6 +11,7 @@
 #include <npc.hpp>
 #include <map.hpp>
 #include <camera.hpp>
+#include <settings.hpp>
 
 using namespace std;
 
@@ -18,11 +19,16 @@ bool compareSprite(shared_ptr<me::sprite> a, shared_ptr<me::sprite> b) { return 
 
 int main(int argc, const char **args)
 {
-    sf::ContextSettings settings;
-    settings.antialiasingLevel = 8;
+    me::game_settings settings{GAME_SETTINGS_SAVE_LOCATION};
+    settings.print();
+    /*     settings.aa((char)4);
+    settings.win_dims({960, 640});
+    settings.fps((char)60);
+    settings.fullscreen(false);
+    settings.print(); */
 
-    sf::RenderWindow window{sf::VideoMode(960, 640), "Awigame",
-                            sf::Style::Default, settings};
+    sf::RenderWindow window{sf::VideoMode(settings.win_dims().x, settings.win_dims().y),
+                            "Awigame", sf::Style::Default, settings.setts()};
 
     me::camera camera{window};
 

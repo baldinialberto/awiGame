@@ -92,7 +92,6 @@ bool me::sprite::operator==(const sprite &cto) const noexcept
 
 ostream &me::sprite::operator<<(ostream &os) const noexcept
 {
-    cout << "Called" << endl;
     os << _png.c_str();
     return os;
 }

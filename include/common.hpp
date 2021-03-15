@@ -6,8 +6,6 @@
 #include <iostream>
 #include <filesystem>
 #include <fstream>
-#include <cstdio>
-#include <cstdlib>
 #include <string>
 #include <vector>
 #include <tuple>
@@ -38,16 +36,15 @@ namespace me
     class fIt
     {
     public:
-        explicit fIt(const char *path = "");
-        ~fIt();
-        const FILE *ptr();
-        bool opened();
-        const fIt &load(const char *path) const;
+        explicit fIt(const char *path = "", const char *flags = "r");
+        virtual ~fIt();
+        bool opened() const;
+        const fIt &load(const char *path, const char *flags);
+        int write(const char *data, size_t len);
+        int read(char *dest, size_t len);
 
     private:
-        void _load();
-        FILE *_filePtr;
-        mutable bool _opened;
+        std::fstream _file;
     };
 
     string filePath(const char *pFilename, fm::pokekit_type pType);

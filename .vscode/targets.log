@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Sat Mar 13 12:23:33 2021
+# Make data base, printed on Mon Mar 15 09:49:35 2021
 
 # Variables
 
@@ -16,7 +17,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 ?F = $(notdir $?)
 # makefile (from `makefile', line 9)
-SRC :=    src/camera.cpp src/common.cpp src/main.cpp src/map.cpp src/npc.cpp src/sprite.cpp src/window.cpp 
+SRC :=    src/camera.cpp src/common.cpp src/main.cpp src/map.cpp src/npc.cpp src/settings.cpp src/sprite.cpp src/window.cpp 
 # environment
 VSCODE_LOG_NATIVE = false
 # makefile (from `makefile', line 7)
@@ -48,7 +49,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/gm/96hj39290fj1q_hlcb6n57hr0000gn/T/vscode-ipc-57a38736-17c5-4f5d-92d9-87fd2029ee9a.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/gm/96hj39290fj1q_hlcb6n57hr0000gn/T/vscode-ipc-b3326876-6c1a-44f3-8b97-63cc041b6e9b.sock
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
 # environment
@@ -60,7 +61,7 @@ LDFLAGS := -L/usr/lib -lstdc++ -lsfml-graphics -lsfml-window -lsfml-system -lm
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.YpayU7TSO3/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.lICER37d9f/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -144,9 +145,9 @@ SUFFIXES :=
 # environment
 MAKELEVEL := 0
 # makefile (from `makefile', line 15)
-OBJECTS := ./build/objects/src/camera.o ./build/objects/src/common.o ./build/objects/src/main.o ./build/objects/src/map.o ./build/objects/src/npc.o ./build/objects/src/sprite.o ./build/objects/src/window.o
+OBJECTS := ./build/objects/src/camera.o ./build/objects/src/common.o ./build/objects/src/main.o ./build/objects/src/map.o ./build/objects/src/npc.o ./build/objects/src/settings.o ./build/objects/src/sprite.o ./build/objects/src/window.o
 # environment
-VSCODE_PID = 880
+VSCODE_PID = 798
 # makefile (from `makefile', line 6)
 APP_DIR := ./build/apps
 # variable set hash-table stats:
@@ -159,12 +160,12 @@ APP_DIR := ./build/apps
 # Directories
 
 # src/gameplay: could not be stat'd.
-# . (device 16777220, inode 2402931): 16 files, no impossibilities.
+# . (device 16777220, inode 2402931): 17 files, no impossibilities.
 # src/graphics: could not be stat'd.
 # src/system: could not be stat'd.
-# src (device 16777220, inode 2410684): 9 files, no impossibilities.
+# src (device 16777220, inode 2410684): 10 files, no impossibilities.
 
-# 25 files, no impossibilities in 5 directories.
+# 27 files, no impossibilities in 5 directories.
 
 # Implicit Rules
 
@@ -178,7 +179,7 @@ build/objects/%.o: %.cpp
 
 # Files
 
-build/apps/game: build/objects/src/camera.o build/objects/src/common.o build/objects/src/main.o build/objects/src/map.o build/objects/src/npc.o build/objects/src/sprite.o build/objects/src/window.o
+build/apps/game: build/objects/src/camera.o build/objects/src/common.o build/objects/src/main.o build/objects/src/map.o build/objects/src/npc.o build/objects/src/settings.o build/objects/src/sprite.o build/objects/src/window.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -299,7 +300,6 @@ release: all
 
 # Not a target:
 .DEFAULT:
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -307,6 +307,7 @@ release: all
 # Not a target:
 build/objects/src/camera.o:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -326,8 +327,14 @@ build/objects/src/main.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+build/objects/src/settings.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # files hash-table stats:
-# Load=17/1024=2%, Rehash=0, Collisions=0/51=0%
+# Load=18/1024=2%, Rehash=0, Collisions=0/53=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -339,6 +346,6 @@ build/objects/src/main.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sat Mar 13 12:23:33 2021
+# Finished Make data base on Mon Mar 15 09:49:35 2021
 
  
